@@ -6,7 +6,7 @@ body{
   padding: 0;
 }
 .App-header {
-  background-color: #282c34;
+  background-color: #2f3640;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,4 +14,65 @@ body{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+/* css for the Home page*/
+
+.home_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.home_nav {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+}
+.home_body {
+  background-color: aquamarine;
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+}
+
+.home_text {
+
+}
+
+.home_text button{
+  
+}
+.home_image img {
+  width: 700px;
+  margin: 20px 70px;
+}
+.nav_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+}
+
+.nav_image img {
+  width: 100px;
+}
+
+.nav_menu {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 60px;
+  width: 80vw;
+  align-items: center;
+}
+
+.nav_menu button {
+  outline: none;
+  border: none;
+  background-color: #4cd137;
+  margin: 10px;
+  width: 100px;
+  height: 50px;
+  color: #f5f6fa;
+  border-radius: 5px;
+  cursor: pointer;
 }
