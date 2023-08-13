@@ -1,6 +1,10 @@
 import { RouterProvider, createBrowserRouter, useRouteError } from 'react-router-dom';
 import './App.css';
 import Home from './components/home/Home';
+import Login from './components/login/Login';
+import SignUp from './components/signUp/Signup';
+import DashBoard from './components/dashBoard/DashBoard';
+import MainLayOut from './components/mainlayout/MainLayOut';
 
 function App() {
   function ErrorPage() {
@@ -19,12 +23,21 @@ function App() {
   const router = createBrowserRouter([
     {
       path:'/',
-      element: <Home />,
+      element: <MainLayOut />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/',
+          path: '/home',
           element: <Home />,
+        },{
+          path:'/login',
+          element: <Login/>
+        },{
+          path: '/signup',
+          element: <SignUp/>
+        },{
+          path: '/dashboard',
+          element: <DashBoard/>
         }]
     }
   ])
