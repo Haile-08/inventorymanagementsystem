@@ -1,24 +1,63 @@
 import React, { useState } from 'react'
-import '../../App.css'
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setLogin } from "../../slice/authSlice";
+import "../../App.css";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("naem")
-  }
+    axios
+      .post("http://localhost:4567/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then(function (res) {
+        return res;
+      })
+      .then(function (resData) {
+        // console.log({
+        //   user: resData.data?.user,
+        //   token: resData.data?.token,
+        // });
+        dispatch(
+          setLogin({
+            user: resData?.data.user,
+            token: resData?.data.token,
+          })
+        );
+        navigate("/dashboard");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
         <p>Login</p>
-        <input type="email" name="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
-        <input type="password" name="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
-  )
+  );
 }
 
 export default Login

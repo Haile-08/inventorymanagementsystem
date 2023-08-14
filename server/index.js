@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(allowedOrigins));
 //routes
 app.use("/auth", require("./routes/auth"));
-app.use("/update", require("./routes/update"));
+
 
 //check the connection and server run on the given port
 mongoose.connection.once("open", () => {
