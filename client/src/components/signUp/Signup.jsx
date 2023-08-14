@@ -12,7 +12,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4567/auth/register", {
+      .post("http://localhost:4566/auth/register", {
         firstName: firstName,
         lastName: lastName,
         email: email,

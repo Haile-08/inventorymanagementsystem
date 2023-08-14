@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   token: null,
+  product: null,
 };
 
 export const authSlice = createSlice({
@@ -10,19 +11,18 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setLogin: (state, action) => {
-      // eslint-disable-next-line no-param-reassign
       state.user = action.payload.user;
-      // eslint-disable-next-line no-param-reassign
       state.token = action.payload.token;
     },
     setLogout: (state) => {
-      // eslint-disable-next-line no-param-reassign
       state.user = null;
-      // eslint-disable-next-line no-param-reassign
       state.token = null;
+    },
+    setProducts: (state, action) => {
+      state.product = action.payload.product;
     },
   },
 });
 
-export const { setLogin, setLogout } = authSlice.actions;
+export const { setLogin, setLogout, setProducts } = authSlice.actions;
 export default authSlice.reducer;

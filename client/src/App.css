@@ -185,6 +185,7 @@ padding: 10px 60px;
   height: 100vh;
   background-color: #2f3640;
   font-family: 'Quicksand', sans-serif;   
+  overflow: hidden;
 }
 
 .dashboardMenu {
@@ -197,8 +198,12 @@ padding: 10px 60px;
   background-color: #3e4855;
   width: 80vw;
   height: 100vh;
+  
 }
-
+.productlistscroll {
+  overflow: auto;
+  max-height: 700px;
+}
 .logo {
   background-color: #2f3640;
   margin-bottom: 30px;
