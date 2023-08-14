@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 .App {
   text-align: center;
 }
@@ -29,18 +30,35 @@ body{
   display: flex;
 }
 .home_body {
-  background-color: aquamarine;
   width: 100vw;
   height: 85vh;
   display: flex;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .home_text {
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 80px 50px;
+}
+.home_text p {
+padding: 10px 60px;
 }
 
+.title {
+  font-size: 60px;
+}
 .home_text button{
-  
+  outline: none;
+  border: none;
+  background-color: #4cd137;
+  margin: 10px 60px;
+  width: 200px;
+  height: 70px;
+  color: #f5f6fa;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .home_image img {
   width: 700px;
