@@ -1,15 +1,22 @@
-import { RouterProvider, createBrowserRouter, useRouteError } from 'react-router-dom';
-import './App.css';
-import Home from './components/home/Home';
-import Login from './components/login/Login';
-import SignUp from './components/signUp/Signup';
-import DashBoard from './components/dashBoard/DashBoard';
-import MainLayOut from './components/mainlayout/MainLayOut';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+  useRouteError,
+} from "react-router-dom";
+import "./App.css";
+import Home from "./components/home/Home";
+import Login from "./components/login/Login";
+import SignUp from "./components/signUp/Signup";
+import DashBoard from "./components/dashBoard/DashBoard";
+import MainLayOut from "./components/mainlayout/MainLayOut";
+import { useSelector } from "react-redux";
 
 function App() {
+  const isAuth = Boolean(useSelector((state) => state.auth.token));
   function ErrorPage() {
     const error = useRouteError();
-  
+
     return (
       <div id="error-page">
         <h1>Oops!</h1>
@@ -22,29 +29,33 @@ function App() {
   }
   const router = createBrowserRouter([
     {
-      path:'/',
+      path: "/",
       element: <MainLayOut />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/',
+          path: "/",
           element: <Home />,
-        },{
-          path:'/login',
-          element: <Login/>
-        },{
-          path: '/signup',
-          element: <SignUp/>
-        },{
-          path: '/dashboard',
-          element: <DashBoard/>
-        }]
-    }
-  ])
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
+        },
+        {
+          path: "/dashboard",
+          element: isAuth ? <DashBoard /> : <Navigate to="/login" />,
+        },
+      ],
+    },
+  ]);
   return (
     <div className="App">
       <header className="App-header">
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </header>
     </div>
   );

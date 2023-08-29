@@ -24,6 +24,9 @@ app.use(cors(allowedOrigins));
 //routes
 app.use("/auth", require("./routes/auth"));
 app.use("/product", require("./routes/product"));
+app.use("/user", require("./routes/user"));
+app.use("/order", require("./routes/order"));
+app.use("/store", require("./routes/store"));
 
 //check the connection and server run on the given port
 mongoose.connection.once("open", () => {
