@@ -236,6 +236,7 @@ function DashBoard() {
     setProductQuantity("");
     setShowOrderAddModal(false);
   };
+
   const handleCustomerAddSubmit = () => {
     axios
       .post("http://localhost:4566/user/add", {
@@ -1035,7 +1036,16 @@ function DashBoard() {
           </div>
           <p>{user?.firstName}</p>
         </div>
-        {showDashboard && <Dash />}
+        {showDashboard && (
+          <Dash
+            setShowDashBoard={setShowDashBoard}
+            setShowProduct={setShowProduct}
+            setShowUser={setShowUser}
+            setShowOrder={setShowOrder}
+            setShowStores={setShowStores}
+            setShowReport={setShowReport}
+          />
+        )}
         {showProduct && (
           <Product
             user={user}

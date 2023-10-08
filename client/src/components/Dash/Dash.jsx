@@ -6,11 +6,60 @@ import { BiUser } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
-function Dash() {
+function Dash({
+  setShowDashBoard,
+  setShowProduct,
+  setShowUser,
+  setShowOrder,
+  setShowStores,
+  setShowReport,
+}) {
   const product = useSelector((state) => state.auth.product);
   const order = useSelector((state) => state.auth.order);
   const customer = useSelector((state) => state.auth.customer);
   const store = useSelector((state) => state.auth.storeData);
+  const handleProduct = () => {
+    setShowProduct(true);
+    setShowDashBoard(false);
+    setShowUser(false);
+    setShowOrder(false);
+    setShowStores(false);
+    setShowReport(false);
+  };
+  const handleUser = () => {
+    setShowUser(true);
+    setShowDashBoard(false);
+    setShowProduct(false);
+    setShowOrder(false);
+    setShowStores(false);
+    setShowReport(false);
+  };
+
+  const handleOrders = () => {
+    setShowOrder(true);
+    setShowDashBoard(false);
+    setShowProduct(false);
+    setShowUser(false);
+    setShowStores(false);
+    setShowReport(false);
+  };
+  const handleStore = () => {
+    setShowStores(true);
+    setShowDashBoard(false);
+    setShowProduct(false);
+    setShowUser(false);
+    setShowOrder(false);
+    setShowReport(false);
+  };
+  const handleReport = () => {
+    setShowReport(true);
+    setShowDashBoard(false);
+    setShowProduct(false);
+    setShowUser(false);
+    setShowOrder(false);
+    setShowStores(false);
+  };
+
   return (
     <div className="dash">
       <div className="dash-nav-title">
@@ -18,7 +67,7 @@ function Dash() {
         <h5>Control panel</h5>
       </div>
       <div className="dash-nav">
-        <div className="dash-product">
+        <div className="dash-product" onClick={handleProduct}>
           <div className="dash-text">
             <div className="dash-number">
               <p>{product?.length}</p>
@@ -31,7 +80,7 @@ function Dash() {
             <PiShoppingCartSimpleThin />
           </div>
         </div>
-        <div className="dash-order">
+        <div className="dash-order" onClick={handleOrders}>
           <div className="dash-text">
             <div className="dash-number">
               <p>{order?.length}</p>
@@ -44,7 +93,7 @@ function Dash() {
             <BsBarChart />
           </div>
         </div>
-        <div className="dash-user">
+        <div className="dash-user" onClick={handleUser}>
           <div className="dash-text">
             <div className="dash-number">
               <p>{customer?.length}</p>
@@ -57,7 +106,7 @@ function Dash() {
             <BiUser />
           </div>
         </div>
-        <div className="dash-store">
+        <div className="dash-store" onClick={handleStore}>
           <div className="dash-text">
             <div className="dash-number">
               <p>{store?.length}</p>
